@@ -1,0 +1,96 @@
+
+{% extends 'base.j2' %}
+
+{% block title %}Invoices{% endblock %}
+{% block content %}
+
+    <h2>Invoices</h2>
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Amount</th>
+          <th>Create Time</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>1500.00</td>
+          <td>2023-07-12 10:33:00</td>
+         
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>240.00</td>
+          <td>2023-07-12 10:43:00</td>
+         
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>320.00</td>
+          <td>2023-07-12 10:55:00</td>
+         
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>325.00</td>
+          <td>2023-07-12 10:58:00</td>
+         
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>450.00</td>
+          <td>2023-07-12 10:58:10</td>
+         
+        </tr>
+      </table>
+    </div>
+    <!-- Add -->
+    <p>&nbsp;</p>
+    <div id="insert" style="display: block">
+      <form id="addInvoice">
+          <legend><strong>Add Invoice</strong></legend>
+          <fieldset class="fields">
+              <label>Amount</label> <input type="text" name="amount">
+              <label>Create Time</label> <input type="text" name="createTime">
+
+          </fieldset>
+          <input class="btn" type="submit" id="addInvoice" value="Add Invoice">
+          <input class="btn" type="button" value="Cancel">
+      </form>
+    </div>
+
+    <p>&nbsp;</p>
+
+    <!-- Update -->
+    <div id="update" style="display: block">
+      <form id="updateInvoice">
+          <legend><strong>Update Invoice</strong></legend>
+          <!-- Data needs to be dynamically populated with DB calls and returns when plugged in, instead of hardcoded -->
+          <fieldset class="fields">
+              <label>ID:</label> 1
+              <label>Amount</label> <input type="text" name="amount" value="1500.00">
+              <label>Create Time</label> <input type="text" name="createTime" value="2023-07-12 10:33:00">
+          </fieldset>
+          <input class="btn" type="submit" id="updateInvoice" value="Save Update Invoice">
+          <input class="btn" type="button" value="Cancel">
+      </form>
+    </div>
+
+    <!-- Delete -->
+    <div id="delete" style="display: block">
+      <form id="deleteInvoice">
+          <legend><strong>Delete Invoice</strong></legend>
+          <!-- Data needs to be dynamically populated with DB calls and returns when plugged in, instead of hardcoded -->
+          <fieldset class="fields">
+              <p>Are you sure you wish to delete the following invoice?</p>
+              <label>ID:</label> 1
+              <label>Amount: </label> 1500.00
+              <label>Create Time: </label> 2023-07-12 10:33:00
+          </fieldset>
+          <input class="btn" type="submit" id="deleteInvoice" value="Delete Invoice">
+          <input class="btn" type="button" value="Cancel">
+      </form>
+    </div>
+
+  {% endblock %}
+</html>

@@ -1,0 +1,112 @@
+{% extends 'base.j2' %}
+
+{% block title %} Patients {% endblock %}
+{% block content %}
+    <h2>Patients</h2>
+    <form>
+      <label for="patientName">Enter patient name to search for appointments:</label>
+      <input type="text" id="patientName" name="patientName">
+      <button type="submit">Search</button>
+    </form>
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Address</th>
+          <th>Phone Number</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Bob</td>
+          <td>Smith</td>
+          <td>101 Oak St</td>
+          <td>(949) 222 2222</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Bill</td>
+          <td>Butler</td>
+          <td>55 Zeb Cove Rd</td>
+          <td>(949) 212 2121</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Ashley</td>
+          <td>Brewer</td>
+          <td>201 Emerald Bay</td>
+          <td>(949) 999 2222</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Allen</td>
+          <td>Walsh</td>
+          <td>200 Misty Sea Dr</td>
+          <td>(949) 765 4545</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Jessica</td>
+          <td>Pavlovsky</td>
+          <td>10 Riviera Dr</td>
+          <td>(949) 310 7141</td>
+        </tr>
+      </table>
+    </div>
+    <p>&nbsp;</p>
+    <!-- Add -->
+    <div id="insert" style="display: block">
+      <form id="addPatient">
+        <legend><strong>Add Patient</strong></legend>
+        <fieldset class="fields">
+          <label>First Name</label> <input type="text" name="firstName">
+          <label>Last Name</label> <input type="text" name="lastName">
+          <label>Address</label> <input type="text" name="address">
+          <label>Phone Number</label> <input type="text" name="phoneNumber">
+        </fieldset>
+        <input class="btn" type="submit" id="addPatient" value="Add Patient">
+        <input class="btn" type="button" value="Cancel">
+      </form>
+    </div>
+
+    <p>&nbsp;</p>
+
+    <!-- Update -->
+    <div id="update" style="display: block">
+      <form id="updatePatient">
+        <legend><strong>Update Patient</strong></legend>
+        <fieldset class="fields">
+          <label>ID:</label> 1
+          <label>First Name</label> <input type="text" name="firstName" value="Bob">
+          <label>Last Name</label> <input type="text" name="lastName" value="Smith">
+          <label>Address</label> <input type="text" name="address" value="101 Oak St">
+          <label>Phone Number</label> <input type="text" name="phoneNumber" value="(949) 222 2222">
+        </fieldset>
+        <input class="btn" type="submit" id="updatePatient" value="Save Update Patient">
+        <input class="btn" type="button" value="Cancel">
+      </form>
+    </div>
+
+    <p>&nbsp;</p>
+
+    <!-- Delete -->
+    <div id="delete" style="display: block">
+      <form id="deletePatient">
+        <legend><strong>Delete Patient</strong></legend>
+        <fieldset class="fields">
+          <p>Are you sure you wish to delete the following patient?</p>
+          <label>ID:</label> 1
+          <label>First Name: </label> Bob
+          <label>Last Name: </label> Smith
+          <label>Address: </label> 101 Oak St
+          <label>Phone Number: </label> (949) 222 2222
+        </fieldset>
+        <input class="btn" type="submit" id="deletePatient" value="Delete Patient">
+        <input class="btn" type="button" value="Cancel">
+      </form>
+    </div>
+
+  {% endblock %}
+
+</html>

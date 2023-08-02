@@ -1,0 +1,109 @@
+{% extends 'base.j2' %}
+
+{% block title %}Appointments{% endblock %}
+
+{% block content %}
+  <body>
+    <h2>Appointments</h2>
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Appointment Date</th>
+                <th>Reason</th>
+                <th>Invoice ID</th>
+                <th>Doctor ID</th>
+                <th>Patient ID</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2023-07-12</td>
+                <td>General Checkup</td>
+                <td>2</td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>2023-07-07</td>
+                <td>Brain Surgery</td>
+                <td>3</td>
+                <td>2</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>2023-07-11</td>
+                <td>Face Melted</td>
+                <td>1</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>2023-07-22</td>
+                <td>Ear Infection</td>
+                <td>4</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>2023-07-24</td>
+                <td>Broken ankle</td>
+                <td>5</td>
+                <td>4</td>
+                <td>5</td>
+            </tr>
+        </table>
+    </div>
+
+    <p>&nbsp;</p>
+    <!-- Add -->
+    <div id="insert" style="display: block">
+        <form id="addAppointment">
+            <legend><strong>Add Appointment</strong></legend>
+            <fieldset class="fields">
+                <label>Appointment Date</label> <input type="text" name="appointmentDate">
+                <label>Reason</label> <input type="textarea" name="reason">
+            </fieldset>
+            <input class="btn" type="submit" id="addAppointment" value="Add Appointment">
+            <input class="btn" type="button" value="Cancel">
+        </form>
+    </div>
+
+    <p>&nbsp;</p>
+    <!-- Update -->
+    <div id="update" style="display: block">
+        <form id="updateAppointment">
+            <legend><strong>Update Appointment</strong></legend>
+            <fieldset class="fields">
+                <label>ID:</label> 1
+                <label>Appointment Date</label> <input type="text" name="appointmentDate" value="2023-07-12">
+                <label>Reason</label> <input type="textarea" name="reason" value="General Checkup">
+            </fieldset>
+            <input class="btn" type="submit" id="updateAppointment" value="Save Update Appointment">
+            <input class="btn" type="button" value="Cancel">
+        </form>
+    </div>
+
+    <p>&nbsp;</p>
+    <!-- Delete -->
+    <div id="delete" style="display: block">
+        <form id="deleteAppointment">
+            <legend><strong>Delete Appointment</strong></legend>
+            <fieldset class="fields">
+                <p>Are you sure you wish to delete the following appointment?</p>
+                <label>ID:</label> 1
+                <label>Appointment Date: </label> 2023-07-12
+                <label>Reason: </label> General Checkup
+                <label>Invoice ID: </label> 2
+                <label>Doctor ID: </label> 1
+                <label>Patient ID: </label> 1
+            </fieldset>
+            <input class="btn" type="submit" id="deleteAppointment" value="Delete Appointment">
+            <input class="btn" type="button" value="Cancel">
+        </form>
+    </div>
+
+{% endblock %}
