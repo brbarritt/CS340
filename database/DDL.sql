@@ -18,7 +18,7 @@ DROP TABLE IF EXISTS `Locations_has_Doctors`;
 DROP TABLE IF EXISTS `Appointments`;
 
 CREATE TABLE IF NOT EXISTS `Patients` (
-  `patient_id` INT NOT NULL AUTO_INCREMENT,
+  `patient_id` INT UNIQUE NOT NULL AUTO_INCREMENT,
   `first_name` VARCHAR(55) NOT NULL,
   `last_name` VARCHAR(55) NOT NULL,
   `address` VARCHAR(255) NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `Patients` (
 -- -----------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `Invoices` (
-  `invoice_id` INT NOT NULL AUTO_INCREMENT,
+  `invoice_id` INT UNIQUE NOT NULL AUTO_INCREMENT,
   `amount` DECIMAL(19,2) NOT NULL,
   `create_time` TIMESTAMP NOT NULL,
   PRIMARY KEY (`invoice_id`));
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `Invoices` (
 -- -----------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `Locations` (
-  `location_id` INT NOT NULL AUTO_INCREMENT,
+  `location_id` INT UNIQUE NOT NULL AUTO_INCREMENT,
   `location_name` VARCHAR(255) NOT NULL,
   `type` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`location_id`));
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `Locations` (
 -- -----------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `Doctors` (
-  `doctor_id` INT NOT NULL AUTO_INCREMENT,
+  `doctor_id` INT UNIQUE NOT NULL AUTO_INCREMENT,
   `first_name` VARCHAR(55) NOT NULL,
   `last_name` VARCHAR(55) NOT NULL,
   `specialty` VARCHAR(55) NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `Locations_has_Doctors` (
 -- -----------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `Appointments` (
-  `appointment_id` INT NOT NULL AUTO_INCREMENT,
+  `appointment_id` INT UNIQUE NOT NULL AUTO_INCREMENT,
   `appointment_date` DATE NOT NULL,
   `reason` VARCHAR(255) NOT NULL,
   `Invoices_invoice_id` INT NOT NULL,

@@ -12,46 +12,27 @@
           <th>Amount</th>
           <th>Create Time</th>
         </tr>
-        <tr>
-          <td>1</td>
-          <td>1500.00</td>
-          <td>2023-07-12 10:33:00</td>
-         
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>240.00</td>
-          <td>2023-07-12 10:43:00</td>
-         
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>320.00</td>
-          <td>2023-07-12 10:55:00</td>
-         
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>325.00</td>
-          <td>2023-07-12 10:58:00</td>
-         
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>450.00</td>
-          <td>2023-07-12 10:58:10</td>
-         
-        </tr>
+        <tbody>
+        <!-- Each Invoice -->
+        {% for invoice in Invoices %}
+            <tr>
+                <!-- Row Values -->
+                {% for value in invoice %}
+                    <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
       </table>
     </div>
+    
     <!-- Add -->
     <p>&nbsp;</p>
     <div id="insert" style="display: block">
-      <form id="addInvoice">
-          <legend><strong>Add Invoice</strong></legend>
+      <form id="addInvoice" method="post" action="/invoices">
+          <legend>Add Invoice</legend>
           <fieldset class="fields">
               <label>Amount</label> <input type="text" name="amount">
-              <label>Create Time</label> <input type="text" name="createTime">
 
           </fieldset>
           <input class="btn" type="submit" id="addInvoice" value="Add Invoice">
@@ -62,24 +43,28 @@
     <p>&nbsp;</p>
 
     <!-- Update -->
-    <div id="update" style="display: block">
-      <form id="updateInvoice">
-          <legend><strong>Update Invoice</strong></legend>
-          <!-- Data needs to be dynamically populated with DB calls and returns when plugged in, instead of hardcoded -->
-          <fieldset class="fields">
-              <label>ID:</label> 1
-              <label>Amount</label> <input type="text" name="amount" value="1500.00">
-              <label>Create Time</label> <input type="text" name="createTime" value="2023-07-12 10:33:00">
-          </fieldset>
-          <input class="btn" type="submit" id="updateInvoice" value="Save Update Invoice">
-          <input class="btn" type="button" value="Cancel">
-      </form>
-    </div>
+<div id="edit" style="display: block">
+  <form id="editInvoice" method="post" action="/edit_invoice">
+    <legend>Edit Invoice</legend>
+    <fieldset class="fields">
+      <label>Select Invoice ID:</label>
+      <select name="invoice_id">
+        {% for invoice in Invoices %}
+          <option value="{{ invoice.invoice_id }}">{{ invoice.invoice_id }}</option>
+        {% endfor %}
+      </select>
+      <label>New Amount</label>
+      <input type="text" name="new_amount">
+    </fieldset>
+    <input class="btn" type="submit" value="Save Edit">
+    <input class="btn" type="button" value="Cancel">
+  </form>
+</div>
 
     <!-- Delete -->
     <div id="delete" style="display: block">
       <form id="deleteInvoice">
-          <legend><strong>Delete Invoice</strong></legend>
+          <legend>Delete Invoice</legend>
           <!-- Data needs to be dynamically populated with DB calls and returns when plugged in, instead of hardcoded -->
           <fieldset class="fields">
               <p>Are you sure you wish to delete the following invoice?</p>

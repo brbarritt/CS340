@@ -3,13 +3,13 @@ import os
 from dotenv import load_dotenv, find_dotenv
 
 # Load our environment variables from the .env file in the root of our project.
-load_dotenv(find_dotenv())
-
+# load_dotenv(find_dotenv())
+from .db_credentials import host, user, passwd, db 
 # Set the variables in our application with those environment variables
-host = os.environ.get("340DBHOST")
-user = os.environ.get("340DBUSER")
-passwd = os.environ.get("340DBPW")
-db = os.environ.get("340DB")
+# host = os.environ.get("340DBHOST")
+# user = os.environ.get("340DBUSER")
+# passwd = os.environ.get("340DBPW")
+# db = os.environ.get("340DB")
 
 def connect_to_database(host = host, user = user, passwd = passwd, db = db):
     '''

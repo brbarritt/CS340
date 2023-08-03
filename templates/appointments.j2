@@ -3,86 +3,111 @@
 {% block title %}Appointments{% endblock %}
 
 {% block content %}
-  <body>
-    <h2>Appointments</h2>
-    <div class="table-container">
-        <table>
+<h2>Appointments</h2>
+<div class="table-container">
+    <table>
         <thead>
-        <tr>
-            <!-- Iterate through each key in the first entry to get the
-            column name -->
-            {% for key in Appointments[0].keys() %}
-
-            <!-- Create a <th> tag with the key inside of it, this will be
-            our header row -->
-            <th>{{ key }}</th>
-
-            <!-- End of this for loop -->
-            {% endfor %}
-        </tr>
+            <tr>
+            <th>ID</th>
+            <th>Appointment Date</th> 
+            <th>Reason</th>
+            <th>Invoice ID</th>
+            <th>Doctor ID</th>
+            <th>Patient ID</th>
+            
+        </thead>
         <tbody>
-
-        <!-- Now, iterate through every person in bsg_people -->
-        {% for appointment in Appointments %}
-        <tr>
-            <!-- Then iterate through every key in the current person dictionary -->
-            {% for key in appointment.keys() %}
-
-            <!-- Create a <td> element with the value of that key in it -->
-            <td>{{appointment[key]}}</td>
+            <!-- Each Appointment -->
+            {% for appointment in Appointments %}
+                <tr>
+                    <!-- Row Values -->
+                    {% for value in appointment %}
+                        <td>{{ value }}</td> 
+                    {% endfor %}
+                </tr>
             {% endfor %}
-        </tr>
-        {% endfor %}
-        </table>
-    </div>
+        </tbody>
+    </table>
+</div>
 
-    <p>&nbsp;</p>
-    <!-- Add -->
-    <div id="insert" style="display: block">
-        <form id="addAppointment">
-            <legend><strong>Add Appointment</strong></legend>
-            <fieldset class="fields">
-                <label>Appointment Date</label> <input type="text" name="appointmentDate">
-                <label>Reason</label> <input type="textarea" name="reason">
-            </fieldset>
-            <input class="btn" type="submit" id="addAppointment" value="Add Appointment">
-            <input class="btn" type="button" value="Cancel">
-        </form>
-    </div>
+<p>&nbsp;</p>
+<!-- Add -->
+<div id="insert" style="display: block">
+    <form id="addAppointment"  method="post" action="/appointments">
+        <legend>Add Appointment</legend>
+        <fieldset class="fields"> 
+            <label>Appointment Date</label> <input type="date" name="appointment_date">
+            <label>Reason</label> <input type="textarea" name="reason">
+            
+            <!-- Dropdowns for doctors, patients, and invoices -->
 
-    <p>&nbsp;</p>
-    <!-- Update -->
-    <div id="update" style="display: block">
-        <form id="updateAppointment">
-            <legend><strong>Update Appointment</strong></legend>
-            <fieldset class="fields">
-                <label>ID:</label> 1
-                <label>Appointment Date</label> <input type="text" name="appointmentDate" value="2023-07-12">
-                <label>Reason</label> <input type="textarea" name="reason" value="General Checkup">
-            </fieldset>
-            <input class="btn" type="submit" id="updateAppointment" value="Save Update Appointment">
-            <input class="btn" type="button" value="Cancel">
-        </form>
-    </div>
+            <label>Doctor</label>
+            <select name="doctor_id">
+                {% for doctor in Doctors %}
+                <option value="{{ doctor[0] }}">
+                    {{ doctor[0] }} : {{ doctor[1] }} {{ doctor[2] }}
+                </option>
+                {% endfor %}
+            </select>
 
-    <p>&nbsp;</p>
-    <!-- Delete -->
-    <div id="delete" style="display: block">
-        <form id="deleteAppointment">
-            <legend><strong>Delete Appointment</strong></legend>
-            <fieldset class="fields">
-                <p>Are you sure you wish to delete the following appointment?</p>
-                <label>ID:</label> 1
-                <label>Appointment Date: </label> 2023-07-12
-                <label>Reason: </label> General Checkup
-                <label>Invoice ID: </label> 2
-                <label>Doctor ID: </label> 1
-                <label>Patient ID: </label> 1
-            </fieldset>
-            <input class="btn" type="submit" id="deleteAppointment" value="Delete Appointment">
-            <input class="btn" type="button" value="Cancel">
-        </form>
-    </div>
+            
+            <label>Patient</label>
+            <select name="patient_id">
+                {% for patient in Patients %}
+                <option value="{{ patient[0] }}">
+                    {{ patient[0] }} : {{ patient[1] }} {{ patient[2] }}
+                </option>
+                {% endfor %}
+            </select>
+
+            <label>Invoice</label>
+            <select name="invoice_id">
+                {% for invoice in Invoices %}
+                <option value="{{ invoice[0] }}">
+                    {{ invoice[0] }}
+                </option>
+                {% endfor %}
+            </select>
+
+        </fieldset>
+        <input class="btn" type="submit" id="add_appointment" value="Add Appointment">
+        <input class="btn" type="button" value="Cancel">
+    </form>
+</div>
+
+<p>&nbsp;</p>
+<!-- Update -->
+<div id="update" style="display: block">
+    <form id="updateAppointment">
+        <legend>Update Appointment</legend>
+        <fieldset class="fields">
+            <label>ID:</label> 1
+            <label>Appointment Date</label> <input type="text" name="appointmentDate" value="2023-07-12">
+            <label>Reason</label> <input type="textarea" name="reason" value="General Checkup">  
+        </fieldset>
+        <input class="btn" type="submit" id="updateAppointment" value="Save Update Appointment">
+        <input class="btn" type="button" value="Cancel">
+    </form>
+</div>
+
+<p>&nbsp;</p>
+<!-- Delete -->
+<div id="delete" style="display: block">
+    <form id="deleteAppointment">
+        <legend>Delete Appointment</legend>
+        <fieldset class="fields">
+            <p>Are you sure you wish to delete the following appointment?</p>
+            <label>ID:</label> 1 
+            <label>Appointment Date: </label> 2023-07-12
+            <label>Reason: </label> General Checkup
+            <label>Invoice ID: </label> 2
+            <label>Doctor ID: </label> 1
+            <label>Patient ID: </label> 1 
+        </fieldset>
+        <input class="btn" type="submit" id="deleteAppointment" value="Delete Appointment">
+        <input class="btn" type="button" value="Cancel">
+    </form>
+</div>
 
 
 {% endblock %}
