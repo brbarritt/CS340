@@ -3,6 +3,7 @@
 <head>
     <title>{% block title %}Hoag Hospital Database Driven Web App{% endblock %}</title>
     {% block styles %}
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/styles.css">
     {% endblock %}
 </head>
@@ -12,9 +13,9 @@
         <ul>
             <li><a href="{{ url_for('root') }}">Home</a></li>
             <li><a href="{{ url_for('patients') }}">Patients</a></li>
-            <li><a href="{{ url_for('invoices') }}">Invoices</a></li>
             <li><a href="{{ url_for('locations') }}">Locations</a></li>
             <li><a href="{{ url_for('doctors') }}">Doctors</a></li>
+            <li><a href="{{ url_for('invoices') }}">Invoices</a></li>
             <li><a href="{{ url_for('appointments') }}">Appointments</a></li>
             <li><a href="{{ url_for('locations_has_doctors') }}">Locations_has_Doctors</a></li>
         </ul>

@@ -1,0 +1,46 @@
+{% extends 'base.j2' %}
+
+{% block title %}Location Information{% endblock %}
+
+{% block content %}
+    <h2>Doctors at Location</h2>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Doctor ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Each Doctor -->
+                {% for doctor in Doctors %}
+                    <tr>
+                        <!-- Row Values -->
+                        <td>{{ doctor[0] }}</td>
+                        <td>{{ doctor[1] }}</td>
+                        <td>{{ doctor[2] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="add-form">
+    </br>
+    </br>
+    <h2>Add Doctor to Location</h2>
+    <form method="post" action="/location_info/{{ LocationID }}">
+        <label for="doctor_id">Select Doctor:</label>
+        <select name="doctor_id">
+            <option value="">Select Doctor...</option>
+            {% for available_doctor in AvailableDoctors %}
+                <option value="{{ available_doctor[0] }}">{{ available_doctor[1] }} {{ available_doctor[2] }}</option>
+            {% endfor %}
+        </select>
+        <input class="btn btn-success" type="submit" value="Add Doctor">
+        <input class="btn btn-danger" type="button" value="Cancel">
+    </form>
+    </div>
+
+{% endblock %}

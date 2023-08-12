@@ -1,0 +1,22 @@
+{% extends 'base.j2' %}
+
+{% block title %}Edit Location{% endblock %}
+{% block content %}
+
+    <h2>Edit Location</h2>
+    <div class="edit-form">
+        <form method="post" action="/edit_location/{{ location[0] }}">
+            
+            <label for="location_name">Location Name:</label>
+            <input type="text" name="location_name" value="{{ location[1] }}">
+
+            <label for="type">Type:</label>
+            <input type="text" name="type" value="{{ location[2] }}">
+            <div class="button-container">
+                <input class="btn btn-success" type="submit" value="Save Changes">
+                <input class="btn btn-danger" type="button" value="Cancel">
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

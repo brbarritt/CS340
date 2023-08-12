@@ -14,7 +14,7 @@
             <th>Invoice ID</th>
             <th>Doctor ID</th>
             <th>Patient ID</th>
-            
+            <th colspan="2">Actions</th>
         </thead>
         <tbody>
             <!-- Each Appointment -->
@@ -24,6 +24,8 @@
                     {% for value in appointment %}
                         <td>{{ value }}</td> 
                     {% endfor %}
+                    <td><a href="{{ url_for('edit_appointment', appointment_id=appointment[0]) }}">Edit</a></td>
+                    <td><a href="{{ url_for('delete_appointment', appointment_id=appointment[0]) }}">Delete</a></td>
                 </tr>
             {% endfor %}
         </tbody>
@@ -36,8 +38,8 @@
     <form id="addAppointment"  method="post" action="/appointments">
         <legend>Add Appointment</legend>
         <fieldset class="fields"> 
-            <label>Appointment Date</label> <input type="date" name="appointment_date">
-            <label>Reason</label> <input type="textarea" name="reason">
+            <label>Appointment Date</label> <input type="date" name="appointment_date" required>
+            <label>Reason</label> <input type="textarea" name="reason" required>
             
             <!-- Dropdowns for doctors, patients, and invoices -->
 
@@ -70,44 +72,9 @@
             </select>
 
         </fieldset>
-        <input class="btn" type="submit" id="add_appointment" value="Add Appointment">
-        <input class="btn" type="button" value="Cancel">
+        <input class="btn btn-success" type="submit" id="add_appointment" value="Add Appointment">
+        <input class="btn btn-danger" type="button" value="Cancel">
     </form>
 </div>
-
-<p>&nbsp;</p>
-<!-- Update -->
-<div id="update" style="display: block">
-    <form id="updateAppointment">
-        <legend>Update Appointment</legend>
-        <fieldset class="fields">
-            <label>ID:</label> 1
-            <label>Appointment Date</label> <input type="text" name="appointmentDate" value="2023-07-12">
-            <label>Reason</label> <input type="textarea" name="reason" value="General Checkup">  
-        </fieldset>
-        <input class="btn" type="submit" id="updateAppointment" value="Save Update Appointment">
-        <input class="btn" type="button" value="Cancel">
-    </form>
-</div>
-
-<p>&nbsp;</p>
-<!-- Delete -->
-<div id="delete" style="display: block">
-    <form id="deleteAppointment">
-        <legend>Delete Appointment</legend>
-        <fieldset class="fields">
-            <p>Are you sure you wish to delete the following appointment?</p>
-            <label>ID:</label> 1 
-            <label>Appointment Date: </label> 2023-07-12
-            <label>Reason: </label> General Checkup
-            <label>Invoice ID: </label> 2
-            <label>Doctor ID: </label> 1
-            <label>Patient ID: </label> 1 
-        </fieldset>
-        <input class="btn" type="submit" id="deleteAppointment" value="Delete Appointment">
-        <input class="btn" type="button" value="Cancel">
-    </form>
-</div>
-
 
 {% endblock %}

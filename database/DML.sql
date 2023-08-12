@@ -27,6 +27,11 @@ DELETE FROM Locations WHERE location_id = :locationIdInput;
 -- Get all doctor names and specialties
 SELECT doctor_id, first_name, last_name, specialty FROM Doctors;
 
+-- Get all appointments by Doctor id
+SELECT appointment_id, appointment_date, reason, Invoices_invoice_id, Doctors_doctor_id, Patients_patient_id 
+FROM Appointments
+WHERE Doctors_doctor_id = :doctorIdInput;
+
 -- Add a new doctor
 INSERT INTO Doctors (first_name, last_name, specialty) VALUES (:firstNameInput, :lastNameInput, :specialtyInput);
 
@@ -43,11 +48,11 @@ DELETE FROM Doctors WHERE doctor_id = :doctorIdInput;
 -- Get all patient details
 SELECT patient_id, first_name, last_name, address, phone_number FROM Patients;
 
--- Get appointments by patient name
-SELECT appointment_id, appointment_date, reason, Invoices_invoice_id, Doctors_doctor_id, Patients_patient_id 
-FROM Appointments
-INNER JOIN Patients ON Appointments.Patients_patient_id = Patients.patient_id
-WHERE Patients.first_name = :patientFirstNameInput OR Patients.last_name = :patientLastNameInput;
+-- -- Get appointments by patient name
+-- SELECT appointment_id, appointment_date, reason, Invoices_invoice_id, Doctors_doctor_id, Patients_patient_id 
+-- FROM Appointments
+-- INNER JOIN Patients ON Appointments.Patients_patient_id = Patients.patient_id
+-- WHERE Patients.first_name = :patientFirstNameInput OR Patients.last_name = :patientLastNameInput;
 
 -- Add a new patient
 INSERT INTO Patients (first_name, last_name, address, phone_number) VALUES 

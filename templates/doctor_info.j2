@@ -1,0 +1,32 @@
+{% extends 'base.j2' %}
+
+  {% block title %}Doctor Appointments{% endblock %}
+
+  {% block content %}
+    <h2>{{ Doctor[0] }} {{ Doctor[1] }} Appointments </h2>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Appointment ID</th>
+                    <th>Appointment Date</th>
+                    <th>Reason</th>
+                    <th>Invoice ID</th>
+                    <th>Patient ID</th
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Each Appointment -->
+                {% for appointment in Appointments %}
+                    <tr>
+                        <!-- Row Values -->
+                        <td>{{ appointment[0] }}</td>
+                        <td>{{ appointment[1] }}</td>
+                        <td>{{ appointment[2] }}</td>
+                        <td>{{ appointment[3] }}</td>
+                        <td>{{ appointment[5] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+  {% endblock %}

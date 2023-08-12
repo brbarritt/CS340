@@ -6,76 +6,43 @@
 
     <h2>Invoices</h2>
     <div class="table-container">
-      <table>
-        <tr>
-          <th>ID</th>
-          <th>Amount</th>
-          <th>Create Time</th>
-        </tr>
-        <tbody>
-        <!-- Each Invoice -->
-        {% for invoice in Invoices %}
+        <table>
             <tr>
-                <!-- Row Values -->
-                {% for value in invoice %}
-                    <td>{{ value }}</td>
-                {% endfor %}
+                <th>ID</th>
+                <th>Amount</th>
+                <th>Create Time</th>
+                <th colspan="2">Actions</th>
             </tr>
-        {% endfor %}
-        </tbody>
-      </table>
+          <tbody>
+          <!-- Each Invoice -->
+          {% for invoice in Invoices %}
+              <tr>
+                  <!-- Row Values -->
+                  {% for value in invoice %}
+                      <td>{{ value }}</td>
+                  {% endfor %}
+                  <td><a href="{{ url_for('edit_invoice', invoice_id=invoice[0]) }}">Edit</a></td>
+                    
+                  <td><a href="{{ url_for('delete_invoice', invoice_id=invoice[0]) }}">Delete</a></td>
+              </tr>
+          {% endfor %}
+          </tbody>
+        </table>
     </div>
     
     <!-- Add -->
     <p>&nbsp;</p>
     <div id="insert" style="display: block">
-      <form id="addInvoice" method="post" action="/invoices">
-          <legend>Add Invoice</legend>
-          <fieldset class="fields">
-              <label>Amount</label> <input type="text" name="amount">
-
-          </fieldset>
-          <input class="btn" type="submit" id="addInvoice" value="Add Invoice">
-          <input class="btn" type="button" value="Cancel">
-      </form>
+        <form id="addInvoice" method="post" action="/invoices">
+            <legend>Add Invoice</legend>
+            <fieldset class="fields">
+                <label>Amount</label> <input type="text" name="amount" required>
+            </fieldset>
+            <input class="btn btn-success" type="submit" id="addInvoice" value="Add Invoice">
+            <input class="btn btn-danger" type="button" value="Cancel">
+        </form>
     </div>
 
-    <p>&nbsp;</p>
-
-    <!-- Update -->
-<div id="edit" style="display: block">
-  <form id="editInvoice" method="post" action="/edit_invoice">
-    <legend>Edit Invoice</legend>
-    <fieldset class="fields">
-      <label>Select Invoice ID:</label>
-      <select name="invoice_id">
-        {% for invoice in Invoices %}
-          <option value="{{ invoice.invoice_id }}">{{ invoice.invoice_id }}</option>
-        {% endfor %}
-      </select>
-      <label>New Amount</label>
-      <input type="text" name="new_amount">
-    </fieldset>
-    <input class="btn" type="submit" value="Save Edit">
-    <input class="btn" type="button" value="Cancel">
-  </form>
-</div>
-
-    <!-- Delete -->
-    <div id="delete" style="display: block">
-      <form id="deleteInvoice">
-          <legend>Delete Invoice</legend>
-          <!-- Data needs to be dynamically populated with DB calls and returns when plugged in, instead of hardcoded -->
-          <fieldset class="fields">
-              <p>Are you sure you wish to delete the following invoice?</p>
-              <label>ID:</label> 1
-              <label>Amount: </label> 1500.00
-              <label>Create Time: </label> 2023-07-12 10:33:00
-          </fieldset>
-          <input class="btn" type="submit" id="deleteInvoice" value="Delete Invoice">
-          <input class="btn" type="button" value="Cancel">
-      </form>
-    </div>
 
   {% endblock %}
 </html>

@@ -5,24 +5,21 @@
 
     <h2>Locations_has_Doctors Table</h2>
     <div class="table-container">
-      <table>
-        <tr>
-          <th>Location ID</th>
-          <th>Doctor ID</th>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>3</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>3</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>1</td>
-        </tr>
-      </table>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Location ID</th>
+                    <th>Doctor ID</th>
+                </tr>
+                {% for location_doctor in LocationsDoctors %}
+                    <tr>
+                        <!-- Row Values -->
+                        <td>{{  location_doctor[0]  }}</td>
+                        <td>{{  location_doctor[1]  }}</td>
+                    </tr>
+                {% endfor %}
+          </tbody>
+        </table>
     </div>
 
   {% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.j2' %}
+
+{% block title %}Edit Appointment{% endblock %}
+{% block content %}
+
+    <h2>Edit Appointment</h2>
+    <div class="edit-form">
+        <form method="post" action="/edit_appointment/{{ appointment[0] }}">
+            <label for="appointment_date">Appointment Date: </label>
+            <input type="date" name="appointment_date" value="{{ appointment[1] }}" required>
+
+            <label for="reason">Reason: </label>
+            <input type="text" name="reason" value="{{ appointment[2] }}" required>
+
+            <label for="invoice_id">Invoice ID: </label>
+            <select name="invoice_id">
+                {% for invoice in Invoices %}
+                    <option value="{{ invoice[0] }}">{{ invoice[0] }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="doctor_id">Doctor ID: </label>
+            <select name="doctor_id">
+                {% for doctor in Doctors %}
+                    <option value="{{ doctor[0] }}">{{ doctor[0] }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="patient_id">Patient ID: </label>
+            <select name="patient_id">
+                <option value="">NULL</option>
+                {% for patient in Patients %}
+                    <option value="{{ patient[0] }}">{{ patient[0] }}</option>
+                {% endfor %}
+            </select>
+
+            <div class="button-container">
+                <input class="btn btn-success" type="submit" value="Save Changes">
+                <input class="btn btn-danger" type="button" value="Cancel">
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

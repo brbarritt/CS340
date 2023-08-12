@@ -11,12 +11,14 @@
 
             <label for="last_name">Last Name:</label>
             <input type="text" name="last_name" value="{{ doctor[2] }}">
-      
+
             <label for="specialty">Specialty:</label>
             <input type="text" name="specialty" value="{{ doctor[3] }}">
-
-            <input type="submit" value="Save Changes">
-            <input type="button" value="Cancel">
+            
+            <div class="button-container">
+                <input class="btn btn-success" type="submit" value="Save Changes">
+                <input class="btn btn-danger" type="button" value="Cancel">
+            </div>
         </form>
     </div>
 
