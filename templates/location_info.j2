@@ -11,6 +11,7 @@
                     <th>Doctor ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,12 +22,17 @@
                         <td>{{ doctor[0] }}</td>
                         <td>{{ doctor[1] }}</td>
                         <td>{{ doctor[2] }}</td>
+                        <td>
+                            <form method="post" action="/remove_doctor/{{ LocationID }}/{{ doctor[0] }}">
+                            <input class="btn btn-danger" type="submit" value="Remove">
+                        </td>
+                    </form>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
-    <div class="add-form">
+    <div>
     </br>
     </br>
     <h2>Add Doctor to Location</h2>

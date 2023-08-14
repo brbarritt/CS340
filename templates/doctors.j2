@@ -18,33 +18,33 @@
             </thead>
             <tbody>
               <!-- Each Doctor -->
-              {% for doctor in Doctors %}
-                  <tr>
-                      <!-- Row Values -->
-                      {% for value in doctor %}
-                          <td>{{ value }}</td>
-                      {% endfor %}
-                      <td><a href="{{ url_for('doctor_info', doctor_id=doctor[0]) }}">View Details</a></td>
-                      <td><a href="{{ url_for('edit_doctor', doctor_id=doctor[0]) }}">Edit</a></td>
-                      <td><a href="{{ url_for('delete_doctor', doctor_id=doctor[0]) }}">Delete</a></td>
-                  </tr>
-              {% endfor %}
-                  
+                {% for doctor in Doctors %}
+                    <tr>
+                        <!-- Row Values -->
+                        {% for value in doctor %}
+                            <td>{{ value }}</td>
+                        {% endfor %}
+                        <td><a href="{{ url_for('doctor_info', doctor_id=doctor[0]) }}">View Details</a></td>
+                        <td><a href="{{ url_for('edit_doctor', doctor_id=doctor[0]) }}">Edit</a></td>
+                        <td><a href="{{ url_for('delete_doctor', doctor_id=doctor[0]) }}">Delete</a></td>
+                    </tr>
+                {% endfor %}
+
             </tbody>
         </table>
     </div>
 
     <p>&nbsp;</p>
     <!-- Add -->
-    <div id="insert" style="display: block">
-      <form id="addDoctor">
-          <legend>Add Doctor</legend>
-              <fieldset class="fields">
-                  <label> First Name </label> <input type="text" name="firstName" required>
-                  <label> Last Name </label> <input type="text" name="lastName" required>
-                  <label> Specialty </label> <input type="text" name="specialty" required>
-              </fieldset>
-            <input class="btn btn-success" type="submit" id="addDoctor" value="Add Doctor">
+    <div style="display: block">
+        <form id="addDoctor" method="post" action="/doctors">
+            <legend>Add Doctor</legend>
+            <fieldset>
+                <label>First Name: </label> <input type="text" name="first_name" required>
+                <label>Last Name: </label> <input type="text" name="last_name" required>
+                <label>Specialty: </label> <input type="text" name="specialty" required>
+            </fieldset>
+            <input class="btn btn-success" type="submit" value="Add Doctor">
             <input class="btn btn-danger" type="button" value="Cancel">
       </form>
     </div>

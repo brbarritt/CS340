@@ -47,11 +47,13 @@ p {
 table {
   border: 1px solid #000000;
   padding: 2%;
+  border-collapse: separate;
+  border-spacing: 2%;
 }
 
-th {
-  padding: 10px;
-  margin: 10px;
+th, td {
+  padding: 5px;
+  margin: 5px;
 }
 .table-container {
   display: flex;

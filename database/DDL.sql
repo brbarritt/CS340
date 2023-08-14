@@ -1,4 +1,4 @@
--- Project Step 3 Draft
+-- DDL Final
 -- Group 78
 -- Kyle Hanley and Blake Barritt
 
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `Appointments` (
   `reason` VARCHAR(255) NOT NULL,
   `Invoices_invoice_id` INT NOT NULL,
   `Doctors_doctor_id` INT NOT NULL,
-  `Patients_patient_id` INT,
+  `Patients_patient_id` INT,    #Changed to fulfill requirement
   PRIMARY KEY (`appointment_id`),
   INDEX `fk_Appointments_Invoices2_idx` (`Invoices_invoice_id` ASC),
   INDEX `fk_Appointments_Doctors1_idx` (`Doctors_doctor_id` ASC),
